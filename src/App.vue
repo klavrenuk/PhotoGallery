@@ -20,7 +20,7 @@
 </template>
  
 <script>
-import Header from './components/Header.Component.vue';
+import Header from './components/Header.vue';
 import './styles/styles.min.css'
 
 export default {
