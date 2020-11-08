@@ -1,7 +1,9 @@
 <template>
-    <div class="label">
+    <a class="label"
+        href='#'
+    >
         <span class="label-text">Photo Gallery</span>
-    </div>
+    </a>
 </template>
 
 <script>
