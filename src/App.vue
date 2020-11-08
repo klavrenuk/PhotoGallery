@@ -1,24 +1,29 @@
 <template>
   <div class="app">
-    <Header />
-    <Navigation />
+    <b-container>
+      <Header />
+      <Navigation />
 
-    <main>
-      This need for circle
-      <section>
-        Photo
-      </section>
-    </main>
+      <main>
+        <Slider />
 
-    <footer>
-      Footer
-    </footer>
+        This need for circle
+        <section>
+          Photo
+        </section>
+      </main>
+
+      <footer>
+        Footer
+      </footer>
+    </b-container>
   </div>
 </template>
  
 <script>
 import Header from './components/Header.vue';
 import Navigation from './components/Navigation.vue'
+import Slider from './components/Slider.vue'
 
 import './styles/styles.min.css'
 
@@ -26,7 +31,7 @@ export default {
 
   name: 'app',
 
-  components: {Header, Navigation},
+  components: {Header, Navigation, Slider},
 
   data () {
     return {
