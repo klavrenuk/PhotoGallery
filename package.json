@@ -8,7 +8,9 @@
     "build": "webpack"
   },
   "dependencies": {
-    "vue": "^2.5.17"
+    "bootstrap": "^4.5.3",
+    "bootstrap-vue": "^2.18.1",
+    "vue": "^2.6.12"
   },
   "devDependencies": {
     "vue-loader": "^15.4.2",
