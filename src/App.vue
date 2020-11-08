@@ -1,10 +1,7 @@
 <template>
   <div class="app">
     <Header />
-
-    <nav>
-      Navigation
-    </nav>
+    <Navigation />
 
     <main>
       This need for circle
@@ -21,13 +18,15 @@
  
 <script>
 import Header from './components/Header.vue';
+import Navigation from './components/Navigation.vue'
+
 import './styles/styles.min.css'
 
 export default {
 
   name: 'app',
 
-  components: {Header},
+  components: {Header, Navigation},
 
   data () {
     return {
