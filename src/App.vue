@@ -6,11 +6,7 @@
 
       <main>
         <Slider />
-
-        This need for circle
-        <section>
-          Photo
-        </section>
+        <Gallery />
       </main>
 
       <footer>
@@ -24,6 +20,7 @@
 import Header from './components/Header.vue';
 import Navigation from './components/Navigation.vue'
 import Slider from './components/Slider.vue'
+import Gallery from './components/Gallery.vue'
 
 import './styles/styles.min.css'
 
@@ -31,7 +28,7 @@ export default {
 
   name: 'app',
 
-  components: {Header, Navigation, Slider},
+  components: {Header, Navigation, Slider, Gallery},
 
   data () {
     return {
