@@ -1,5 +1,5 @@
 <template>
-    <div class="slider">
+    <section class="slider">
         <img :src="'./src/images/slider1.jpg'"
             alt="Slider image"
         />
@@ -15,7 +15,7 @@
                 <b-icon icon="chevron-right"></b-icon>
             </button>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
