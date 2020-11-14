@@ -1,36 +1,46 @@
 <template>
     <section class="gallery">
-        <b-row>
-            <b-col cols="12"
-                    md="6"
-                    lg="4"
-                    v-for="photo in photos"
-                    :key="photo.id"
-            >
-                <Photo 
-                    :photo="photo"
-                />
-            </b-col>
-        </b-row>
+
+        <div v-if="isLoading">
+            <Loading />
+        </div>
+        <div v-else>
+            <b-row>
+                <b-col cols="12"
+                        md="6"
+                        lg="4"
+                        v-for="photo in photos"
+                        :key="photo.id"
+                >
+                    <Photo 
+                        :photo="photo"
+                    />
+                </b-col>
+            </b-row>
+        </div>
+
     </section>
 </template>
 
 <script>
     import Photo from './Photo.vue'
+    import Loading from './Loading.vue'
 
     export default {
         name: 'Gallery',
 
-        components: {Photo},
+        components: {Photo, Loading},
 
         data() {
             return {
-                photos: []
+                photos: [],
+                isLoading: true
             }
         },
 
         methods: {
             getPhotos() {
+                this.isLoading = true;
                 this.photos = [
                     {
                         name: '1',
@@ -63,6 +73,7 @@
                         id: 6
                     }
                 ]
+                this.isLoading = false;
             }
         },
 
