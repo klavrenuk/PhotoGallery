@@ -1,10 +1,17 @@
 <template>
     <section class="gallery">
-       <Photo v-for="photo in photos"
-            :key="photo.id"
-            :photo="photo"
-       >
-       </Photo>
+        <b-row>
+            <b-col cols="12"
+                    md="6"
+                    lg="4"
+                    v-for="photo in photos"
+                    :key="photo.id"
+            >
+                <Photo 
+                    :photo="photo"
+                />
+            </b-col>
+        </b-row>
     </section>
 </template>
 
@@ -64,3 +71,11 @@
         }
     }
 </script>
+
+<style lang="less">
+    .gallery {
+        padding: 2rem 1rem;
+        box-sizing: border-box;
+        background: rgba(204,204,204, .5);
+    }
+</style>
