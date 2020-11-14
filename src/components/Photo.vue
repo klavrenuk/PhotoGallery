@@ -29,6 +29,13 @@
         position: relative;
         width: 272px;
         height: 160px;
+        margin: 0 0 1rem 0;
+
+        & a {
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+        }
 
         & img {
             height: 100%;
