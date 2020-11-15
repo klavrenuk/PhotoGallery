@@ -50,9 +50,5 @@ export default {
     z-index: 1;
     display: none;
     background: rgba(0,0,0, .5);
-
-    &.active {
-      display: block;
-    }
   }
 </style>

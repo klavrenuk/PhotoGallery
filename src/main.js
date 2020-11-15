@@ -15,22 +15,26 @@ new Vue({
 
   methods: {
     showShadowBlock(action) {
-      const shadowBlock = document.querySelector('#shadowBlock').classList;
+      const shadowBlock = document.querySelector('body').classList;
 
       if(shadowBlock) {
         switch(action) {
           case 'show':
-            shadowBlock.add('active');
+            shadowBlock.add('shadow');
             break;
 
           case 'hide':
-            shadowBlock.remove('active');
+            shadowBlock.remove('shadow');
             break;
 
           default:
-            shadowBlock.toggle('active');
+            shadowBlock.toggle('shadow');
         }
       }
     }
+  },
+
+  created() {
+    this.showShadowBlock('show');
   }
 })

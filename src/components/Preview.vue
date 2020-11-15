@@ -39,6 +39,7 @@
         width: calc(100% - 2rem);
         margin: 0 auto;
         overflow: hidden;
+        z-index: 2;
         display: none;
         background: #333333;
 

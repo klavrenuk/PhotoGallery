@@ -26,3 +26,28 @@
         name: 'PreviewInfo'
     }
 </script>
+
+<style lang="less">
+    .preview_info {
+        padding: 1rem;
+        height: 100vh;
+        overflow-y: auto;
+        background: #fff;
+    }
+
+    .preview_info-title {
+        font-weight: 900;
+    }
+
+    .preview_info-comments {
+        color: #999999;
+
+        & li {
+            margin-bottom: 1rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+</style>
