@@ -11,7 +11,7 @@
             <li>ultrices a velit sed, scelerisque malesuada velit</li>
             <li>ultrices a velit sed, scelerisque malesuada velit</li>
 
-            <li>
+            <li class="item_style_none">
                 <b-textarea rows="4"
                             cols="100"
                 />
