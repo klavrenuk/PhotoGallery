@@ -34,6 +34,15 @@
         width: 272px;
         height: 160px;
         margin: 0 0 1rem 0;
+        transition: .2s linear;
+
+        &:hover,
+        &:active,
+        &:focus {
+            border: 8px solid;
+            border-image: linear-gradient(#FF0000 , #FF33FF);
+            border-image-slice: 1;
+        }
 
         & a {
             width: 100%;
