@@ -9,3 +9,18 @@
         name: 'PreviewPhoto'
     }
 </script>
+
+<style lang="less">
+    .preview_photo {
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+</style>

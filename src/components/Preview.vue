@@ -32,7 +32,15 @@
 
 <style lang="less">
     .preview {
+        position: fixed;
+        top: 1rem;
+        left: 0;
+        right: 0;
+        width: calc(100% - 2rem);
+        margin: 0 auto;
+        overflow: hidden;
         display: none;
+        background: #333333;
 
         &.show {
             display: block;
