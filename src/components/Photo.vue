@@ -10,8 +10,9 @@
             </a>
             <figcaption :id="'photo-' + photo.id"
                     class="photo-title"
-                >{{ photo.titile }}</figcaption>
-       </figure>
+                >{{ photo.titile }}
+            </figcaption>
+    </figure>
 </template>
 
 <script>

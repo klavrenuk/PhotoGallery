@@ -19,17 +19,19 @@
             </b-row>
         </div>
 
+        <Preview ref="Preview" />
     </section>
 </template>
 
 <script>
     import Photo from './Photo.vue'
     import Loading from './Loading.vue'
+    import Preview from './Preview.vue'
 
     export default {
         name: 'Gallery',
 
-        components: {Photo, Loading},
+        components: {Photo, Loading, Preview},
 
         data() {
             return {
