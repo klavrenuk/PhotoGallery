@@ -1,5 +1,7 @@
 <template>
   <div class="app">
+    <div id="shadowBlock" class="shadow_block"></div>
+
     <b-container>
       <Header />
       <Navigation />
@@ -37,3 +39,20 @@ export default {
   }
 }
 </script>
+
+<style lang="less">
+  .shadow_block {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: none;
+    background: rgba(0,0,0, .5);
+
+    &.active {
+      display: block;
+    }
+  }
+</style>
