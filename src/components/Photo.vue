@@ -3,7 +3,9 @@
             :ariaLabelledby="'photo-' + photo.id"
             class="photo"
     >
-            <a title="Show photo">
+            <a title="Show photo"
+                @click="onOpenPreview(photo)"
+            >
                 <img :src="'./src/images/photo-' + photo.name + '.jpg'"
                     :alt="'Image ' + photo.title"
                 />
@@ -20,7 +22,8 @@
         name: 'Photo',
 
         props: [
-            'photo'
+            'photo',
+            'onOpenPreview'
         ]
     }
 </script>

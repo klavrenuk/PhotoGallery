@@ -14,6 +14,7 @@
                 >
                     <Photo 
                         :photo="photo"
+                        :onOpenPreview="onOpenPreview"
                     />
                 </b-col>
             </b-row>
@@ -76,6 +77,11 @@
                     }
                 ]
                 this.isLoading = false;
+            },
+
+            onOpenPreview(photo) {
+                this.$root.showShadowBlock();
+                this.$refs.Preview.showPreview();
             }
         },
 

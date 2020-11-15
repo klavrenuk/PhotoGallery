@@ -32,9 +32,5 @@ new Vue({
         }
       }
     }
-  },
-
-  created() {
-    this.showShadowBlock('show');
   }
 })

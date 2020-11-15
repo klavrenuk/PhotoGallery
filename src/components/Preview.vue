@@ -24,7 +24,14 @@
 
         data() {
             return {
-                isShow: true
+                isShow: false
+            }
+        },
+
+        methods: {
+            showPreview() {
+                this.$root.showShadowBlock('show');
+                this.isShow = true;
             }
         }
     }
