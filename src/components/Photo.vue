@@ -3,7 +3,7 @@
             :ariaLabelledby="'photo-' + photo.id"
             class="photo"
     >
-            <a>
+            <a title="Show photo">
                 <img :src="'./src/images/photo-' + photo.name + '.jpg'"
                     :alt="'Image ' + photo.title"
                 />

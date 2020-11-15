@@ -16,10 +16,6 @@
             return {
 
             }
-        },
-
-        mounted() {
-            console.log('mounted');
         }
     }
 </script>
