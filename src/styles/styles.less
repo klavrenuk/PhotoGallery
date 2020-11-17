@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap');
 
+@colorMain: #34495E;
+@colorMainHover: #0000FF;
+
 body {
     color: #656565;
     line-height: 20px;
@@ -52,7 +55,7 @@ a {
     &:hover,
     &:active,
     &:focus {
-        color: #30b7e8;
+        color: @colorMainHover;
         text-decoration: none !important;
     }
 }
@@ -60,7 +63,7 @@ a {
 button.btn {
     padding: 7px 16px;
     border-radius: 2px;
-    border: 1px solid #34495E;
+    border: 1px solid @colorMain;
     font-weight: 700;
 
     &:hover,
@@ -71,14 +74,14 @@ button.btn {
 
     &.btn-default {
         color: #fff;
-        background: #34495E;
+        background: @colorMain;
 
         &:hover,
         &:active,
         &:focus {
             color: #fff;
-            border-color: #30b7e8;
-            background-color: #30b7e8;
+            border-color: @colorMainHover;
+            background-color: @colorMainHover;
         }
     }
 
@@ -90,7 +93,7 @@ button.btn {
         &:active,
         &:focus {
             border-color: #42c2f0;
-            background: #42c2f0;
+            background: #0000FF;
         }
     }
 
@@ -103,7 +106,7 @@ button.btn {
         &:hover,
         &:active,
         &:focus {
-            color: #42c2f0;
+            color: @colorMainHover;
             background: none;
         }
     }
@@ -112,14 +115,14 @@ button.btn {
         padding: 0 0 1px 0;
         border: none;
         border-bottom: 2px solid transparent;
-        color: #0000FF;
+        color: @colorMainHover;
         font-weight: 500;
 
         &:hover,
         &:active,
         &:focus {
-            border-bottom: 2px solid #0000FF;
-            color: #0000FF;
+            border-bottom: 2px solid @colorMainHover;
+            color: @colorMainHover;
             text-decoration: none;
         }
     }
