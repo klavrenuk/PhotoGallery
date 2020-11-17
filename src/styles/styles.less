@@ -25,6 +25,7 @@ h1, h2, h3, h4, h5, h6 {
     background: #FFFF33;
 }
 
+textarea,
 select,
 input,
 a,
@@ -33,6 +34,14 @@ button {
     &:active,
     &:focus {
         outline: none !important;
+    }
+}
+
+textarea {
+    &:hover,
+    &:active,
+    &:focus {
+        box-shadow: none;
     }
 }
 

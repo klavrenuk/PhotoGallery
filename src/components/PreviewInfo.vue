@@ -14,8 +14,9 @@
             <li class="item_style_none">
                 <b-textarea rows="4"
                             cols="100"
+                            class="preview_info-text_area"
                 />
-                <button class="btn btn-link">Добавить</button>
+                <button class="btn btn-link preview_info-add">Добавить</button>
             </li>    
         </ul>
     </div>
@@ -29,7 +30,7 @@
 
 <style lang="less">
     .preview_info {
-        padding: 1rem;
+        padding: 1rem 1rem 3rem;
         height: 100vh;
         overflow-y: auto;
         background: #fff;
@@ -49,5 +50,13 @@
                 margin-bottom: 0;
             }
         }
+    }
+
+    .preview_info-text_area {
+	    margin: 3rem 0 .5rem;
+    }
+
+    .preview_info-add {
+	    float: right;
     }
 </style>
