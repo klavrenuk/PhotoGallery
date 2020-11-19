@@ -9,7 +9,7 @@
 			<div>
 				<b-row>
 					<b-col cols="10">
-						<h4 class="preview_info-title">Title</h4>
+						<h4 class="preview_info-title">{{ photo.title }}</h4>
 					</b-col>
 
 					<b-col cols="2"
@@ -26,18 +26,10 @@
 				</b-row>
 			</div>
 
-			<p class="preview_info-description">Quisque vulputate suscipit lectus, ac vulputate purus sollicitudin et. Aenean
-				vulputate tellus eu ipsum suscipit rhoncus. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-				per inceptos himenaeos. In interdum placerat efficitur. Mauris elit augue, ultrices a velit sed, scelerisque
-				malesuada velit.</p>
+			<p class="preview_info-description">{{ photo.description }}</p>
 
 			<ul class="preview_info-comments">
-				<li>ultrices a velit sed, scelerisque malesuada velit</li>
-				<li>ultrices a velit sed, scelerisque malesuada velit</li>
-				<li>ultrices a velit sed, scelerisque malesuada velit</li>
-				<li>ultrices a velit sed, scelerisque malesuada velit</li>
-				<li>ultrices a velit sed, scelerisque malesuada velit</li>
-				<li>ultrices a velit sed, scelerisque malesuada velit</li>
+				<li v-for="comment in photo.comments">{{ comment.text }}</li>
 
 				<li class="item_style_none">
 					<b-textarea rows="4"
@@ -82,6 +74,26 @@ export default {
 
 			_this.isLoading = true;
 			return new Promise((resolve => {
+
+				_this.photo = {
+					title: 'PreviewTitle',
+					description: 'Simple text for description',
+					comments: [
+						{
+							id: 1,
+							text: 'New Zealand is so beautiful'
+						},
+						{
+							id: 2,
+							text: 'Finland is amazing'
+						},
+						{
+							id: 3,
+							text: 'Russia is so great'
+						}
+
+					]
+				}
 
 				setTimeout(function() {
 					_this.isLoading = false;
