@@ -80,8 +80,7 @@
             },
 
             onOpenPreview(photo) {
-                this.$root.showShadowBlock();
-                this.$refs.Preview.showPreview();
+                this.$refs.Preview.showPreview(photo.id);
             }
         },
 

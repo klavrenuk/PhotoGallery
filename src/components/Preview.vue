@@ -4,10 +4,10 @@
 	>
 		<b-row class="preview-components">
 			<b-col cols="12" md="8">
-				<PreviewPhoto/>
+				<PreviewPhoto :id="id" />
 			</b-col>
 			<b-col cols="12" md="4">
-				<PreviewInfo/>
+				<PreviewInfo ref="PreviewInfo" />
 			</b-col>
 		</b-row>
 	</div>
@@ -24,13 +24,16 @@ export default {
 
 	data() {
 		return {
-			isShow: false
+			isShow: false,
+			id: null
 		}
 	},
 
 	methods: {
-		showPreview() {
+		showPreview(id) {
 			this.$root.showShadowBlock('show');
+			this.id = id;
+			this.$refs.PreviewInfo.loadInfo(id);
 			this.isShow = true;
 		}
 	}
