@@ -1,53 +1,92 @@
 <template>
 	<div class="preview_info">
-		<h4 class="preview_info-title">
-			<b-row>
-				<b-col cols="10">
-					Title
-				</b-col>
-				<b-col cols="2">
-					<button class="btn btn-icon"
-					        @click="onClose"
+		<div v-if="isLoading">
+			<div class="preview_info-loading">
+				<Loading />
+			</div>
+		</div>
+		<div v-else>
+			<div>
+				<b-row>
+					<b-col cols="10">
+						<h4 class="preview_info-title">Title</h4>
+					</b-col>
+
+					<b-col cols="2"
+					       class="text-right"
 					>
-						<b-icon icon="x"
-						        font-scale="1.5"
-						></b-icon>
-					</button>
-				</b-col>
-			</b-row>
-		</h4>
+						<button class="btn btn-icon"
+						        @click="onClose"
+						>
+							<b-icon icon="x"
+							        font-scale="1.5"
+							></b-icon>
+						</button>
+					</b-col>
+				</b-row>
+			</div>
 
-		<p class="preview_info-description">Quisque vulputate suscipit lectus, ac vulputate purus sollicitudin et. Aenean
-			vulputate tellus eu ipsum suscipit rhoncus. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-			per inceptos himenaeos. In interdum placerat efficitur. Mauris elit augue, ultrices a velit sed, scelerisque
-			malesuada velit.</p>
+			<p class="preview_info-description">Quisque vulputate suscipit lectus, ac vulputate purus sollicitudin et. Aenean
+				vulputate tellus eu ipsum suscipit rhoncus. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+				per inceptos himenaeos. In interdum placerat efficitur. Mauris elit augue, ultrices a velit sed, scelerisque
+				malesuada velit.</p>
 
-		<ul class="preview_info-comments">
-			<li>ultrices a velit sed, scelerisque malesuada velit</li>
-			<li>ultrices a velit sed, scelerisque malesuada velit</li>
-			<li>ultrices a velit sed, scelerisque malesuada velit</li>
-			<li>ultrices a velit sed, scelerisque malesuada velit</li>
-			<li>ultrices a velit sed, scelerisque malesuada velit</li>
-			<li>ultrices a velit sed, scelerisque malesuada velit</li>
+			<ul class="preview_info-comments">
+				<li>ultrices a velit sed, scelerisque malesuada velit</li>
+				<li>ultrices a velit sed, scelerisque malesuada velit</li>
+				<li>ultrices a velit sed, scelerisque malesuada velit</li>
+				<li>ultrices a velit sed, scelerisque malesuada velit</li>
+				<li>ultrices a velit sed, scelerisque malesuada velit</li>
+				<li>ultrices a velit sed, scelerisque malesuada velit</li>
 
-			<li class="item_style_none">
-				<b-textarea rows="4"
-				            cols="100"
-				            class="preview_info-text_area"
-				/>
-				<button class="btn btn-link preview_info-add">Добавить</button>
-			</li>
-		</ul>
+				<li class="item_style_none">
+					<b-textarea rows="4"
+					            cols="100"
+					            class="preview_info-text_area"
+					/>
+					<button class="btn btn-link preview_info-add">Добавить</button>
+				</li>
+			</ul>
+		</div>
 	</div>
 </template>
 
 <script>
+import Loading from './Loading.vue'
+
 export default {
 	name: 'PreviewInfo',
+
+	components: {Loading},
+
+	data() {
+		return {
+			isLoading: false,
+			photo: {}
+		}
+	},
 
 	methods: {
 		onClose() {
 			alert('on close');
+		},
+
+		async loadInfo(id) {
+			console.log('load info', id);
+
+			await this.getPhotoInfo(id);
+		},
+
+		getPhotoInfo() {
+			const _this = this;
+
+			_this.isLoading = true;
+			return new Promise((resolve => {
+
+				setTimeout(function() {
+					_this.isLoading = false;
+				}, 1000);
+			}))
 		}
 	}
 }
@@ -83,5 +122,12 @@ export default {
 
 .preview_info-add {
 	float: right;
+}
+
+.preview_info-loading {
+	height: 90vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 </style>
