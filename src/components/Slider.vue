@@ -1,17 +1,21 @@
 <template>
     <section class="slider">
-        <img :src="'./src/images/slider1.jpg'"
+        <img :src="'./src/images/slider' + activeSlider + '.jpg'"
             alt="Slider image"
         />
 
         <div class="slider-controller">
-            <button class="btn btn-icon">
+            <button class="btn btn-icon"
+                    @click="controllerAction('prev')"
+            >
                 <b-icon icon="chevron-left"
                     font-scale="1"
                 ></b-icon>
             </button>
 
-            <button class="btn btn-icon">
+            <button class="btn btn-icon"
+                    @click="controllerAction('next')"
+            >
                 <b-icon icon="chevron-right"></b-icon>
             </button>
         </div>
@@ -20,7 +24,44 @@
 
 <script>
     export default {
-        name: 'Slider'
+        name: 'Slider',
+
+	    data() {
+        	return {
+		        activeSlider: 1,
+	        }
+	    },
+
+	    methods: {
+		    controllerAction(action) {
+		    	if(action == 'next') {
+		    		if(this.activeSlider < 8) {
+					    this.activeSlider++;
+				    } else {
+		    			this.activeSlider = 1;
+				    }
+
+			    } else {
+		    		if(this.activeSlider > 1) {
+		    			this.activeSlider--;
+				    } else {
+		    			this.activeSlider = 8;
+				    }
+			    }
+		    },
+
+		    setAutoCarousel() {
+			    const _this = this;
+
+			    setInterval(function() {
+				    _this.controllerAction('next');
+			    }, 10000);
+		    }
+	    },
+
+	    mounted() {
+			this.setAutoCarousel();
+	    }
     }
 </script>
 
