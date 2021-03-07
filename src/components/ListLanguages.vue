@@ -1,7 +1,9 @@
 <template>
     <div class="listLanguages">
         <ul v-if="isShow">
-            <li v-for="lang in languages">
+            <li v-for="lang in languages"
+                :class="lang.isActive ? 'active' : ''"
+            >
                 <button
                         class="btn btn-link btn--lang"
                         @click="onChoiceLang(lang)"
@@ -37,22 +39,40 @@
                     }
                 ],
                 currentLang: 'en',
-                isShow: true
+                isShow: false
             }
         },
 
         methods: {
             onShow() {
-                console.log('onShow');
+                this.isShow = true;
             },
 
             onChoiceLang(lang) {
                 this.currentLang = lang.prop;
+                this.isShow = false;
+            },
+
+            initCloseListener() {
+                const _this = this;
+
+                document.addEventListener('click', (event) => {
+                    const NavigationLanguage = document.querySelector('#NavigationLanguage');
+
+                    if(NavigationLanguage) {
+                        if(!NavigationLanguage.contains(event.target)) {
+                            _this.isShow = false;
+                        }
+
+                    } else {
+                        _this.isShow = false;
+                    }
+                })
             }
         },
 
-        mounted() {
-            console.log("hello");
+        created() {
+            this.initCloseListener();
         }
     }
 </script>

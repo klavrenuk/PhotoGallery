@@ -3,6 +3,7 @@
         <a href='#'>Home</a>
         <a href="/contact">Contact Us</a>
         <a
+                id="NavigationLanguage"
                 class="navigation-language"
                 @click="showListLanguages"
         >
@@ -25,7 +26,7 @@
 
         methods: {
             showListLanguages() {
-                console.log('showListLanguages');
+                this.$refs.ListLanguages.onShow();
             }
         }
     }
