@@ -3,10 +3,13 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import router from './router.js'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+Vue.use(VueAxios, axios)
  
 
 import 'bootstrap/dist/css/bootstrap.css'

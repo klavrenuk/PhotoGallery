@@ -2,6 +2,7 @@
 
 @colorMain: #34495E;
 @colorMainHover: #0000FF;
+@colorSecondary: #00B8EA;
 
 body {
     color: #656565;
@@ -136,4 +137,15 @@ ol, ul, dl {
     margin: 0 !important;
     padding: 0;
     list-style: none;
+}
+
+.container--grey {
+    background: #f5f5f5;
+}
+
+.form-control {
+    &:focus {
+        border-color: @colorSecondary !important;
+        box-shadow: 0 0 0 0.2rem rgba(0,184,234, .25) !important;
+    }
 }
