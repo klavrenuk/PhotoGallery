@@ -23,8 +23,6 @@ import Slider from './components/Slider.vue'
 import Footer from './components/Footer.vue'
 
 
-import './styles/styles.min.css'
-
 export default {
   name: 'app',
 
@@ -33,6 +31,8 @@ export default {
 </script>
 
 <style lang="less">
+  @import './src/styles/styles';
+
   .shadow_block {
     position: fixed;
     top: 0;
