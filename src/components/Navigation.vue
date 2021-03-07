@@ -1,17 +1,27 @@
 <template>
-    <div class="wrap-navigation">
-        <nav class="navigation">
-            <a href='#'>Home</a>
-            <a href="/contact">Contact Us</a>
-            <a @click="showListLanguages">Language</a>
-            <a href="/admin">Admin</a>
-        </nav>
-    </div>
+    <nav class="navigation">
+        <a href='#'>Home</a>
+        <a href="/contact">Contact Us</a>
+        <a
+                class="navigation-language"
+                @click="showListLanguages"
+        >
+            Language
+            <ListLanguages ref="ListLanguages" />
+        </a>
+        <a href="/admin">Admin</a>
+    </nav>
 </template>
 
 <script>
+    import ListLanguages from "./ListLanguages.vue";
+
     export default {
         name: 'Navigation',
+
+        components: {
+            ListLanguages
+        },
 
         methods: {
             showListLanguages() {
@@ -41,6 +51,10 @@
             &:active,
             &:focus {
                 color: #fff;
+            }
+
+            &.navigation-language {
+                position: relative;
             }
         }
     }
