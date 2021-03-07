@@ -1,13 +1,23 @@
 <template>
-    <nav class="navigation">
-        <a href='#'>Home</a>
-        <a href="#">Contact Us</a>
-    </nav>
+    <div class="wrap-navigation">
+        <nav class="navigation">
+            <a href='#'>Home</a>
+            <a href="/contact">Contact Us</a>
+            <a @click="showListLanguages">Language</a>
+            <a href="/admin">Admin</a>
+        </nav>
+    </div>
 </template>
 
 <script>
     export default {
-        name: 'Navigation'
+        name: 'Navigation',
+
+        methods: {
+            showListLanguages() {
+                console.log('showListLanguages');
+            }
+        }
     }
 </script>
 
@@ -20,6 +30,7 @@
         justify-content: center;
         background: #34495E;
 
+        a:not([href]):not([class]),
         & a {
             padding: 36px 15px;
             color: #7f8e9d;

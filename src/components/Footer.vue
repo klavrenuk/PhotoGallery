@@ -4,14 +4,14 @@
 			<b-col cols="6"
 			       class="text-center"
 			>
-				<a href="/languages"
+				<a href="/admin"
 				   class="footer-link"
-				>Languages</a>
+				>Admin</a>
 			</b-col>
 			<b-col cols="6"
 			       class="text-center"
 			>
-				<a href="/contact-us"
+				<a href="/contact"
 				   class="footer-link"
 				>Contact us</a>
 			</b-col>

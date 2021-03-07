@@ -29,13 +29,7 @@ import './styles/styles.min.css'
 export default {
   name: 'app',
 
-  components: {Header, Navigation, Slider, Gallery, Footer},
-
-  data () {
-    return {
-      
-    }
-  }
+  components: {Header, Navigation, Slider, Gallery, Footer}
 }
 </script>
 
