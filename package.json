@@ -12,7 +12,8 @@
     "bootstrap-vue": "^2.18.1",
     "file-loader": "^6.2.0",
     "url-loader": "^4.1.1",
-    "vue": "^2.6.12"
+    "vue": "^2.6.12",
+    "vue-router": "^3.5.1"
   },
   "devDependencies": {
     "css-loader": "^1.0.0",

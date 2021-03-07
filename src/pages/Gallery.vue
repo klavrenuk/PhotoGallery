@@ -25,9 +25,9 @@
 </template>
 
 <script>
-    import Photo from './Photo.vue'
-    import Loading from './Loading.vue'
-    import Preview from './Preview.vue'
+    import Photo from './../components/Photo.vue'
+    import Loading from './../components/Loading.vue'
+    import Preview from './../components/Preview.vue'
 
     export default {
         name: 'Gallery',

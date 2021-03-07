@@ -8,7 +8,7 @@
 
       <main>
         <Slider />
-        <Gallery />
+        <router-view />
       </main>
 
 	    <Footer />
@@ -20,7 +20,6 @@
 import Header from './components/Header.vue';
 import Navigation from './components/Navigation.vue'
 import Slider from './components/Slider.vue'
-import Gallery from './components/Gallery.vue'
 import Footer from './components/Footer.vue'
 
 
@@ -29,7 +28,7 @@ import './styles/styles.min.css'
 export default {
   name: 'app',
 
-  components: {Header, Navigation, Slider, Gallery, Footer}
+  components: {Header, Navigation, Slider, Footer}
 }
 </script>
 
