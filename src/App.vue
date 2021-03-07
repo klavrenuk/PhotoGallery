@@ -4,10 +4,8 @@
 
     <b-container>
       <Header />
-      <Navigation />
 
       <main>
-        <Slider />
         <router-view />
       </main>
 
@@ -18,15 +16,12 @@
  
 <script>
 import Header from './components/Header.vue';
-import Navigation from './components/Navigation.vue'
-import Slider from './components/Slider.vue'
 import Footer from './components/Footer.vue'
-
 
 export default {
   name: 'app',
 
-  components: {Header, Navigation, Slider, Footer}
+  components: {Header, Footer}
 }
 </script>
 

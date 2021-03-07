@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Gallery from './pages/Gallery.vue'
+import Dashboard from './pages/Dashboard.vue'
 import Admin from './pages/Admin.vue'
 
 const routes = [
-    { path: '/', component: Gallery },
+    { path: '/', component: Dashboard },
     { path: '/admin', component: Admin }
 ]
 

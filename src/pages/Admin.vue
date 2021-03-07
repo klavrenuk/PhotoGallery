@@ -1,6 +1,6 @@
 <template>
     <div class="admin">
-
+        Hello from admin
     </div>
 </template>
 
