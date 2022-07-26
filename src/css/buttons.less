@@ -3,7 +3,7 @@
 @default: {
   border: 1px solid @colorFourth;
   color: #fff;
-  background: @colorForth;
+  background: @colorFourth;
 }
 
 @primary: {
@@ -42,29 +42,21 @@
     &:hover,
     &:active,
     &:focus {
-      color: @colorMain;
-      background: none;
-    }
-  }
-
-  &.btn-secondary {
-    @default();
-
-    &:hover,
-    &:active,
-    &:focus {
-      @primary();
+      border: 1px solid @colorThird;
+      color: #fff;
+      background: @colorThird;
     }
   }
 
   &.btn-link {
     border: none;
+    color: @colorMain;
     text-decoration: none;
 
     &:hover,
     &:active,
     &:focus {
-      color: @colorMain !important;
+      color: @colorThird;
       background: none;
     }
   }
