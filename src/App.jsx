@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Demo from './components/demo/Demo';
+import Dashboard from "./views/Dashboard";
 
 import {
     BrowserRouter as Router,
@@ -13,8 +14,9 @@ const App = () => {
         <div>
             <Router>
                 <Switch>
+                    <Route path={'/demo'}><Demo /></Route>
                     <Route path={'/'}>
-                        <Route path={'/demo'}><Demo /></Route>
+                        <Dashboard />
                     </Route>
                 </Switch>
             </Router>
