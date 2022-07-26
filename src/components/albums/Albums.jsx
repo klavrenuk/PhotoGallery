@@ -4,6 +4,8 @@ import {Row, Col} from "reactstrap";
 import Loader from "../loader/Loader";
 import Album from "./Album";
 
+import './css/albums.min.css';
+
 export default function Albums() {
     const [albums, setAlbums] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -15,19 +17,19 @@ export default function Albums() {
                 {
                     name: 'france',
                     photos: [
-                        'public/images/france/image1.jpg',
-                        'public/images/france/image2.jpg',
-                        'public/images/france/image3.jpg'
+                        'images/france/image1.jpg',
+                        'images/france/image2.jpg',
+                        'images/france/image3.jpg'
                     ]
                 },
-                // {
-                //     name: 'usa',
-                //     photos: [
-                //         'public/images/usa/image1.jpg',
-                //         'public/images/usa/image2.jpg',
-                //         'public/images/usa/image3.jpg'
-                //     ]
-                // }
+                {
+                    name: 'usa',
+                    photos: [
+                        'images/usa/img1.jpg',
+                        'images/usa/img2.jpg',
+                        'images/usa/img3.jpg'
+                    ]
+                }
             ])
 
             setIsLoading(false);
@@ -43,17 +45,13 @@ export default function Albums() {
                         <Row>
                             <Col sm={12}>
                                 <div className={'covers'}>
-                                    <ul>
-                                        {
-                                            albums.map((album, key) => {
-                                                return (
-                                                    <li key={key}>
-                                                        <Album data={album} isCover={true}/>
-                                                    </li>
-                                                )
-                                            })
-                                        }
-                                    </ul>
+                                    {
+                                        albums.map((album, key) => {
+                                            return (
+                                                <Album data={album} isCover={true} key={key} />
+                                            )
+                                        })
+                                    }
                                 </div>
                             </Col>
                         </Row>
