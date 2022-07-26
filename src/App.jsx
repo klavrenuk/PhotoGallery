@@ -1,4 +1,5 @@
 import React from 'react';
+import {Container} from "reactstrap";
 
 import Demo from './components/demo/Demo';
 import Dashboard from "./views/Dashboard";
@@ -12,14 +13,16 @@ import {
 const App = () => {
     return (
         <div>
-            <Router>
-                <Switch>
-                    <Route path={'/demo'}><Demo /></Route>
-                    <Route path={'/'}>
-                        <Dashboard />
-                    </Route>
-                </Switch>
-            </Router>
+            <Container>
+                <Router>
+                    <Switch>
+                        <Route path={'/demo'}><Demo /></Route>
+                        <Route path={'/'}>
+                            <Dashboard />
+                        </Route>
+                    </Switch>
+                </Router>
+            </Container>
         </div>
     )
 }

@@ -20,14 +20,14 @@ export default function Albums() {
                         'public/images/france/image3.jpg'
                     ]
                 },
-                {
-                    name: 'usa',
-                    photos: [
-                        'public/images/usa/image1.jpg',
-                        'public/images/usa/image2.jpg',
-                        'public/images/usa/image3.jpg'
-                    ]
-                }
+                // {
+                //     name: 'usa',
+                //     photos: [
+                //         'public/images/usa/image1.jpg',
+                //         'public/images/usa/image2.jpg',
+                //         'public/images/usa/image3.jpg'
+                //     ]
+                // }
             ])
 
             setIsLoading(false);
@@ -42,17 +42,19 @@ export default function Albums() {
                     <div>
                         <Row>
                             <Col sm={12}>
-                                <ul>
-                                    {
-                                        albums.map((album, key) => {
-                                            return (
-                                                <li key={key}>
-                                                    <Album data={album}/>
-                                                </li>
-                                            )
-                                        })
-                                    }
-                                </ul>
+                                <div className={'covers'}>
+                                    <ul>
+                                        {
+                                            albums.map((album, key) => {
+                                                return (
+                                                    <li key={key}>
+                                                        <Album data={album} isCover={true}/>
+                                                    </li>
+                                                )
+                                            })
+                                        }
+                                    </ul>
+                                </div>
                             </Col>
                         </Row>
                     </div>
