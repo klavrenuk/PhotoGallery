@@ -2,10 +2,10 @@ import React from 'react';
 
 import LoaderImg from './loader.gif';
 
-import './loading.min.css';
+import './loader.min.css';
 
-export default function Loading(props) {
-    const classNames = 'loading ' + props.type || '';
+export default function Loader(props) {
+    const classNames = 'loader ' + props.type || '';
 
     return (
         <div className={classNames}>
