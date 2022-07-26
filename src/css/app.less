@@ -1,0 +1,92 @@
+@import "config";
+@import "buttons";
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #F6F6F6;
+}
+
+::selection {
+  color: #fff;
+  background: @colorMain;
+}
+
+::placeholder {
+  color: #CCCCCC;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul {
+  margin-bottom: 0;
+  padding-left: 0;
+
+  & li {
+    list-style-type: none;
+  }
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.form-control {
+  box-shadow: none !important;
+
+  &:focus {
+    border-color: @colorMain !important;
+  }
+}
+
+form {
+  text-align: left;
+}
+
+.modal {
+  & .modal-dialog {
+    &.modal-lg {
+      max-width: 90%;
+    }
+  }
+
+  & .modal-header {
+    & button.close {
+      border: none;
+      color: #999;
+      font-size: 30px;
+      background: none;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: @colorMain;
+      }
+    }
+  }
+}
+
+.custom_scrollbar {
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #fff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 3px solid #CCCCCC;
+    background-color: #CCCCCC;
+  }
+}

@@ -1,0 +1,110 @@
+@import "config.less";
+
+@default: {
+  border: 1px solid @colorFourth;
+  color: #fff;
+  background: @colorForth;
+}
+
+@primary: {
+  border: 1px solid @colorMain;
+  color: #fff;
+  background: @colorMain;
+}
+
+
+.btn {
+  padding: 8px 12px;
+  font-size: 13px;
+  transition: transform .1s ease-out,color .15s linear;
+  transform: scale(1);
+  white-space: nowrap;
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: none !important;
+  }
+
+  &.btn-default {
+    @default();
+
+    &:hover,
+    &:active,
+    &:focus {
+      @primary();
+    }
+  }
+
+  &.btn-primary {
+    @primary();
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: @colorMain;
+      background: none;
+    }
+  }
+
+  &.btn-secondary {
+    @default();
+
+    &:hover,
+    &:active,
+    &:focus {
+      @primary();
+    }
+  }
+
+  &.btn-link {
+    border: none;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: @colorMain !important;
+      background: none;
+    }
+  }
+
+  &.btn-icon {
+    padding: 5px;
+    border: none;
+    color: #ccc !important;
+    font-size: 15px;
+    background: none;
+
+    &.btn-icon--20 {
+      font-size: 20px;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      border: none;
+      color: @colorMain !important;
+      background: none;
+    }
+  }
+
+  &.btn-white {
+    color: #000;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: #EAEAEA;
+    }
+  }
+
+  &.btn-block {
+    width: 100%;
+  }
+
+  &.btn-empty {
+    padding: 0;
+  }
+}
