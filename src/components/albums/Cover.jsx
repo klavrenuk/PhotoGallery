@@ -1,10 +1,13 @@
 import React from 'react';
+import {useDispatch} from 'react-redux';
 
 import NoPhoto from './images/no-photo.jpg';
 
 import './css/cover.min.css';
 
 export default function Cover(props) {
+    const dispatch = useDispatch();
+
     let photos;
 
     if(props.data.hasOwnProperty('photos')) {
@@ -13,12 +16,24 @@ export default function Cover(props) {
         }
     }
 
+    const openAlbum = () => {
+        dispatch({
+            type: 'photoCarousel',
+            value: {
+                isShow: true,
+                photos: photos
+            }
+        })
+    }
+
     return (
         <div className={'cover'}>
             {
                 !photos[0] ?
                     <img src={NoPhoto} alt={'Img no photo'} />
-                    : <a className={'cover-link'}>
+                    : <a className={'cover-link'}
+                         onClick={() => openAlbum()}
+                    >
                         <img src={photos[0]} alt={'Img of cover'} />
                     </a>
 
