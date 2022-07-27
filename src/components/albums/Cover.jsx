@@ -7,7 +7,6 @@ import './css/cover.min.css';
 export default function Cover(props) {
     let photos;
 
-    console.log(props);
     if(props.data.hasOwnProperty('photos')) {
         if(Array.isArray(props.data.photos)) {
             photos = props.data.photos || [];
