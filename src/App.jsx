@@ -18,7 +18,7 @@ const App = () => {
                 <Router>
                     <Header />
 
-                    <main>
+                    <main className={'main'}>
                         <Switch>
                             {
                                 navigation.routes.map((route) => {
