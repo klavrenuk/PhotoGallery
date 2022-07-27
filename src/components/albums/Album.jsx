@@ -1,10 +1,13 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
+import { HiOutlinePencil, HiOutlineTrash } from "react-icons/hi";
+import {Row, Col, Button} from "reactstrap";
 
 import Cover from "./Cover";
 import PhotoSmall from "./PhotoSmall";
 
 import './css/album.min.css';
+
 
 export default function Album(props) {
     const dispatch = useDispatch();
@@ -16,8 +19,6 @@ export default function Album(props) {
     }
 
     const openPhoto = () => {
-        console.log('openPhoto');
-
         dispatch({
             type: 'photoCarousel',
             value: {
@@ -27,9 +28,29 @@ export default function Album(props) {
         })
     }
 
+    const onEdit = () => console.log('edit');
+
+    const onDelete = () => console.log('onDelete');
+
     return (
         <div className={'album'}>
-            <h4 className={'album-title'}>{album.name}</h4>
+            <Row>
+                <Col sm={10}>
+                    <h4 className={'album-title'}>{album.name}</h4>
+                </Col>
+                <Col sm={2} className={'text-right'}>
+                    <Button color={'icon'}
+                            onClick={() => onEdit()}
+                    >
+                        <HiOutlinePencil />
+                    </Button>
+                    <Button color={'icon'}
+                            onClick={() => onDelete()}
+                    >
+                        <HiOutlineTrash />
+                    </Button>
+                </Col>
+            </Row>
             {
                 !album.photos[0] ?
                     <h4 className={'album-no_photo'}>No Photo</h4>
