@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
 
-import NoPhoto from './images/no-photo.jpg';
+import NoPhoto from '../../resources/images/no-photo.jpg';
 
 import './css/cover.min.css';
 

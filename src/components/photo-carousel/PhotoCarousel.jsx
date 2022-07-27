@@ -15,20 +15,69 @@ export default function PhotoCarousel() {
 
     const [isShow, setIsShow] = useState(false);
     const [photos, setPhotos] = useState([]);
+    const [activePhoto, setActivePhoto] = useState(0);
+    const [isInit, setIsInit] = useState(true);
 
     useEffect(() => {
+        if(isInit) {
+            initListeners();
+            setIsInit(false);
+        }
+
         if(state.photoCarousel) {
             setIsShow(state.photoCarousel.isShow);
 
             if(state.photoCarousel.isShow) {
+                toggleRootClass(true);
                 setPhotos(state.photoCarousel.photos);
+                setActivePhoto(0);
+
+            } else {
+                toggleRootClass(false);
             }
         }
 
     }, [state]);
 
-    const onChangePhoto = (action) => {
-        console.log('onCHangepjoto', action);
+    const toggleRootClass = (isAdd) => {
+        const root = document.querySelector('#root');
+
+        if(root) {
+            if(isAdd) {
+                root.classList.add('root--h_fixed')
+            } else {
+                root.classList.remove('root--h_fixed')
+            }
+        }
+    }
+
+    const initListeners = () => {
+        console.log('initListeners');
+        document.removeEventListener("keydown", handleKeyDown);
+    }
+
+    const handleKeyDown = (event) => {
+        console.log(event.keyCode);
+
+        switch (event.keyCode) {
+
+        }
+    }
+
+    const onMoveImg = (side) => {
+        if(side === 'right') {
+            if(activePhoto + 1 >= photos.length) {
+                setActivePhoto(0);
+            } else {
+                setActivePhoto(activePhoto + 1);
+            }
+        } else {
+            if(activePhoto === 0) {
+                setActivePhoto(photos.length - 1);
+            } else {
+                setActivePhoto(activePhoto - 1);
+            }
+        }
     }
 
     const close = () => {
@@ -40,6 +89,7 @@ export default function PhotoCarousel() {
             }
         })
     }
+
 
     if(!isShow) {
         return null;
@@ -53,20 +103,25 @@ export default function PhotoCarousel() {
                         <AiOutlineClose />
                     </Button>
 
-                    <img src={'images/france/image1.jpg'} alt={'Img of cover'} />
+                    <img src={photos[activePhoto]} alt={'Img of cover'} />
 
-                    <div className={'photo_carousel-controller'}>
-                        <Button color={'icon'}
-                                onClick={() => onChangePhoto('prev')}
-                        >
-                            <BsChevronLeft />
-                        </Button>
-                        <Button color={'icon'}
-                                onClick={() => onChangePhoto('next')}
-                        >
-                            <BsChevronRight />
-                        </Button>
-                    </div>
+                    {
+                        photos.length > 1 ?
+                            <div className={'photo_carousel-controller'}>
+                                <Button color={'icon'}
+                                        onClick={() => onMoveImg('left')}
+                                >
+                                    <BsChevronLeft />
+                                </Button>
+                                <Button color={'icon'}
+                                        onClick={() => onMoveImg('right')}
+                                >
+                                    <BsChevronRight />
+                                </Button>
+                            </div>
+                            :
+                            null
+                    }
                 </div>
             </div>
         )

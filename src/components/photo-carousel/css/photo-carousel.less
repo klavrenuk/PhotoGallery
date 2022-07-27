@@ -50,16 +50,33 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+
+    &:hover,
+    &:active,
+    &:focus {
+      opacity: 1;
+    }
 
     & button {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border-radius: 100px;
       color: #fff !important;
-      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
       font-weight: bold;
+      background: rgba(0,0,0,.6);
 
       &:hover,
       &:active,
       &:focus {
-        color: @colorThird !important;
+        color: #fff !important;
+        background: @colorThird;
       }
     }
   }
