@@ -13,15 +13,15 @@ export default function Cover(props) {
         }
     }
 
-
-
     return (
         <div className={'cover'}>
             {
                 !photos[0] ?
                     <img src={NoPhoto} alt={'Img no photo'} />
-                    :
-                    <img src={photos[0]} alt={'Img of cover'} />
+                    : <a className={'cover-link'}>
+                        <img src={photos[0]} alt={'Img of cover'} />
+                    </a>
+
             }
 
             <div className={'cover-bottom'}>
