@@ -29,6 +29,42 @@ export default function Albums() {
                         'images/usa/img2.jpg',
                         'images/usa/img3.jpg'
                     ]
+                },
+                {
+                    name: 'New Zealand',
+                    photos: [
+                        'images/france/image1.jpg'
+                    ]
+                },
+                {
+                    name: 'Canada',
+                    photos: [
+
+                    ]
+                },
+                {
+                    name: 'Germany',
+                    photos: [
+                        'images/france/image1.jpg',
+                        'images/france/image2.jpg',
+                        'images/france/image3.jpg'
+                    ]
+                },
+                {
+                    name: 'Belarus',
+                    photos: [
+                        'images/france/image1.jpg',
+                        'images/france/image2.jpg',
+                        'images/france/image3.jpg'
+                    ]
+                },
+                {
+                    name: 'Argentina',
+                    photos: [
+                        'images/france/image1.jpg',
+                        'images/france/image2.jpg',
+                        'images/france/image3.jpg'
+                    ]
                 }
             ])
 
