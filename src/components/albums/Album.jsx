@@ -1,10 +1,14 @@
 import React from 'react';
+import {useDispatch} from 'react-redux';
+
 import Cover from "./Cover";
 import PhotoSmall from "./PhotoSmall";
 
 import './css/album.min.css';
 
 export default function Album(props) {
+    const dispatch = useDispatch();
+
     const album = props.data;
 
     if (props.isCover) {
@@ -13,6 +17,14 @@ export default function Album(props) {
 
     const openPhoto = () => {
         console.log('openPhoto');
+
+        dispatch({
+            type: 'photoCarousel',
+            value: {
+                isShow: true,
+                photos: album.photos
+            }
+        })
     }
 
     return (
@@ -24,10 +36,13 @@ export default function Album(props) {
                     :
                     <div className={'album-photos'}>
                         {
-                            album.photos.map((photo, key) => {
+                            album.photos.map((photo, index) => {
                                 return (
-                                    <div className={'album-photos-photo'}>
-                                        <PhotoSmall photo={photo} openAlbum={openPhoto}/>
+                                    <div className={'album-photos-photo'} key={index}>
+                                        <PhotoSmall
+                                            photo={photo}
+                                            openPhoto={openPhoto}
+                                        />
                                     </div>
                                 )
                             })
