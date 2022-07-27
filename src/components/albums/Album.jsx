@@ -28,9 +28,17 @@ export default function Album(props) {
         })
     }
 
-    const onEdit = () => console.log('edit');
+    const onEdit = () => {
+        if(props.refEdit) {
+            props.refEdit.current.show();
+        }
+    }
 
-    const onDelete = () => console.log('onDelete');
+    const onDelete = () => {
+        if(props.refConfirm) {
+            props.refConfirm.current.open(album);
+        }
+    }
 
     return (
         <div className={'album'}>

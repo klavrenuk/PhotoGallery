@@ -1,14 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {Row, Col} from "reactstrap";
 
 import Loader from "../loader/Loader";
 import Album from "./Album";
 
 import './css/albums.min.css';
+import ModalConfirmDelete from "../modals/ModalConfirmDelete";
 
 export default function Albums() {
     const [albums, setAlbums] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+
+    const RefModalConfirmDelete = useRef();
 
     useEffect(() => {
         if(isLoading) {
@@ -93,7 +96,12 @@ export default function Albums() {
                                     {
                                         albums.map((album, key) => {
                                             return (
-                                                <Album data={album} isCover={false} key={key} />
+                                                <Album data={album}
+                                                       isCover={false}
+                                                       key={key}
+                                                       refEdit={RefModalConfirmDelete}
+                                                       refConfirm={RefModalConfirmDelete}
+                                                />
                                             )
                                         })
                                     }
@@ -104,6 +112,7 @@ export default function Albums() {
 
             }
 
+            <ModalConfirmDelete ref={RefModalConfirmDelete} />
         </div>
     )
 }
