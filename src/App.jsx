@@ -2,6 +2,7 @@ import React from 'react';
 import {Container} from "reactstrap";
 
 import Header from "./components/header/Header";
+import PhotoCarousel from "./components/photo-carousel/PhotoCarousel";
 
 
 import {
@@ -33,6 +34,8 @@ const App = () => {
                     </main>
                 </Router>
             </Container>
+
+            <PhotoCarousel />
         </div>
     )
 }
