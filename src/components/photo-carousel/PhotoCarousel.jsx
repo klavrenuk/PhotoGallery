@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
 import {Button} from 'reactstrap';
@@ -14,27 +14,31 @@ export default function PhotoCarousel() {
     const dispatch = useDispatch();
 
     const [isShow, setIsShow] = useState(false);
-    const [photos, setPhotos] = useState([]);
-    const [activePhoto, setActivePhoto] = useState(0);
-    const [isInit, setIsInit] = useState(true);
+    const [activePhoto, setActivePhoto] = useState(null);
+
+    const activePhotoIndex = useRef(0);
+    const photos = useRef([]);
+
 
     useEffect(() => {
-        if(isInit) {
-            initListeners();
-            setIsInit(false);
-        }
-
         if(state.photoCarousel) {
+            document.addEventListener('keydown', handleKeyDown);
+
             setIsShow(state.photoCarousel.isShow);
 
             if(state.photoCarousel.isShow) {
+                activePhotoIndex.current = 0;
                 toggleRootClass(true);
-                setPhotos(state.photoCarousel.photos);
-                setActivePhoto(0);
+                photos.current = state.photoCarousel.photos;
+                setActivePhoto(photos.current[activePhotoIndex.current]);
 
             } else {
                 toggleRootClass(false);
             }
+        }
+
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
         }
 
     }, [state]);
@@ -51,33 +55,43 @@ export default function PhotoCarousel() {
         }
     }
 
-    const initListeners = () => {
-        console.log('initListeners');
-        document.removeEventListener("keydown", handleKeyDown);
-    }
-
     const handleKeyDown = (event) => {
-        console.log(event.keyCode);
-
         switch (event.keyCode) {
+            case 37:
+                onMoveImg('left');
+                break;
 
+            case 39:
+                onMoveImg('right');
+                break;
+
+            case 27:
+                close();
+                break;
         }
     }
 
     const onMoveImg = (side) => {
+        if(photos.current.length < 2) {
+            return;
+        }
+
         if(side === 'right') {
-            if(activePhoto + 1 >= photos.length) {
-                setActivePhoto(0);
+            if(activePhotoIndex.current + 1 >= photos.current.length) {
+                activePhotoIndex.current = 0;
             } else {
-                setActivePhoto(activePhoto + 1);
+                activePhotoIndex.current = activePhotoIndex.current + 1;
             }
+
         } else {
-            if(activePhoto === 0) {
-                setActivePhoto(photos.length - 1);
+            if(activePhotoIndex.current === 0) {
+                activePhotoIndex.current = photos.current.length - 1;
             } else {
-                setActivePhoto(activePhoto - 1);
+                activePhotoIndex.current = activePhotoIndex.current - 1;
             }
         }
+
+        setActivePhoto(photos.current[activePhotoIndex.current])
     }
 
     const close = () => {
@@ -90,9 +104,9 @@ export default function PhotoCarousel() {
         })
     }
 
-
     if(!isShow) {
         return null;
+
     } else {
         return (
             <div className={'photo_carousel'}>
@@ -103,10 +117,10 @@ export default function PhotoCarousel() {
                         <AiOutlineClose />
                     </Button>
 
-                    <img src={photos[activePhoto]} alt={'Img of cover'} />
+                    <img src={activePhoto} alt={'Photo'} />
 
                     {
-                        photos.length > 1 ?
+                        photos.current.length > 1 ?
                             <div className={'photo_carousel-controller'}>
                                 <Button color={'icon'}
                                         onClick={() => onMoveImg('left')}
