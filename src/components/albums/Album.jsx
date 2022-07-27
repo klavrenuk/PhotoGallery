@@ -1,19 +1,39 @@
 import React from 'react';
 import Cover from "./Cover";
+import PhotoSmall from "./PhotoSmall";
 
+import './css/album.min.css';
 
 export default function Album(props) {
-    if(!props) {
-        return null;
+    const album = props.data;
+
+    if (props.isCover) {
+        return <Cover data={album}/>
     }
 
-    if(props.isCover) {
-        return <Cover data={props.data} />
+    const openPhoto = () => {
+        console.log('openPhoto');
     }
 
     return (
         <div className={'album'}>
-            Album
+            <h4 className={'album-title'}>{album.name}</h4>
+            {
+                !album.photos[0] ?
+                    <h4 className={'album-no_photo'}>No Photo</h4>
+                    :
+                    <div className={'album-photos'}>
+                        {
+                            album.photos.map((photo, key) => {
+                                return (
+                                    <div className={'album-photos-photo'}>
+                                        <PhotoSmall photo={photo} openAlbum={openPhoto}/>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+            }
         </div>
     )
 }

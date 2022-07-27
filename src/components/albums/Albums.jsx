@@ -9,7 +9,6 @@ import './css/albums.min.css';
 export default function Albums() {
     const [albums, setAlbums] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [colSize, setColSize] = useState(4);
 
     useEffect(() => {
         if(isLoading) {
@@ -85,6 +84,16 @@ export default function Albums() {
                                         albums.map((album, key) => {
                                             return (
                                                 <Album data={album} isCover={true} key={key} />
+                                            )
+                                        })
+                                    }
+                                </div>
+
+                                <div className={'photos'}>
+                                    {
+                                        albums.map((album, key) => {
+                                            return (
+                                                <Album data={album} isCover={false} key={key} />
                                             )
                                         })
                                     }

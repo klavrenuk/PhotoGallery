@@ -1,0 +1,26 @@
+.album {
+  padding: 2rem 0;
+
+  & .album-title {
+    color: #999999;
+    text-transform: capitalize;
+  }
+
+  & .album-photos {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+
+    & .album-photos-photo {
+      width: 399px;
+      height: 265px;
+      padding: 1rem;
+    }
+  }
+
+  & .album-no_photo {
+    color: #ccc;
+    text-align: center;
+  }
+}
