@@ -21,7 +21,7 @@ export default function Albums() {
         if(isLoading) {
             const arr = await getAlbums();
 
-            setIsLoading(arr);
+            setAlbums(arr);
             setIsLoading(false);
         }
 
@@ -41,6 +41,8 @@ export default function Albums() {
             })
         ])
     }
+
+    const update = () => setIsLoading(true);
 
     return (
         <div className={'albums'}>
@@ -84,8 +86,8 @@ export default function Albums() {
 
             }
 
-            <ModalConfirmDelete ref={RefModalConfirmDelete} />
-            <ModalAlbum ref={RefModalAlbum} />
+            <ModalConfirmDelete ref={RefModalConfirmDelete} update={update} />
+            <ModalAlbum ref={RefModalAlbum} update={update} />
         </div>
     )
 }

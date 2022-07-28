@@ -59,19 +59,22 @@ const ModalAlbum = forwardRef((props, ref) => {
             method: method,
             url: '/api/album',
             params: {
-                album: item.name
+                name: item.name
             },
             data: form
-        }).then((response) => {
-            console.log('response');
+        }).then(() => {
+            props.update();
+            setIsLoading(false);
+
+            setTimeout(() => {
+                setIsOpen(false);
+            }, 600);
 
         }).catch((err) => {
+            setIsLoading(false);
             console.error(err);
             Swal.fire(processingExceptions(err));
-
-        }).finally(() => {
-            setIsLoading(false);
-        });
+        })
     }
 
     const onChangePhotos = (photos) => {
