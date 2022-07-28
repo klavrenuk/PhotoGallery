@@ -2,6 +2,7 @@ import React, {forwardRef, useImperativeHandle, useState} from 'react'
 import {Button, FormGroup, Modal, ModalBody, ModalFooter, ModalHeader, Label, Input} from "reactstrap";
 import Swal from 'sweetalert2'
 import axios from "axios";
+import {processingExceptions} from "../../middleware/processingExceptions";
 
 
 import Loader from "../loader/Loader";
@@ -12,15 +13,15 @@ import './css/modal-edit.min.css';
 const ModalAlbum = forwardRef((props, ref) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [album, setAlbum] = useState({});
+    const [album, setAlbum] = useState({name: ''});
     const [title, setTile] = useState(null);
     const [isNew, setIsNew] = useState(true);
 
     useImperativeHandle(ref, () => ({
-        open(album = {name: ''}, isNewAlbum = false) {
+        open(item = {name: ''}, isNewAlbum = false) {
             setIsOpen(true);
-            setAlbum(album);
-            setTile(album.name || 'Create album');
+            setAlbum(item);
+            setTile(item.name || 'Create album');
             setIsNew(isNewAlbum);
         }
     }));
@@ -28,14 +29,18 @@ const ModalAlbum = forwardRef((props, ref) => {
     const toggle = () => setIsOpen(!isOpen);
 
     const onSave = () => {
-        setIsLoading(true);
-        console.log('saving...', album);
+        let item = Object.assign({}, album);
 
-
-        if(album.name === '') {
+        if(item.name === '') {
             Swal.fire('Please fill name');
             return false;
         }
+
+        if(!item.hasOwnProperty('photos')) {
+            item.photos = [];
+        }
+
+        setIsLoading(true);
 
         let method = 'PUT';
         if(isNew) {
@@ -43,12 +48,9 @@ const ModalAlbum = forwardRef((props, ref) => {
         }
 
         let form = new FormData();
-        for(let photo of album.photos) {
+        for(let photo of item.photos) {
             form.append('photos', photo);
         }
-
-
-        console.log('sended', form.get('photos'));
 
         axios({
             header: {
@@ -57,7 +59,7 @@ const ModalAlbum = forwardRef((props, ref) => {
             method: method,
             url: '/api/album',
             params: {
-                album: album.name
+                album: item.name
             },
             data: form
         }).then((response) => {
@@ -65,6 +67,7 @@ const ModalAlbum = forwardRef((props, ref) => {
 
         }).catch((err) => {
             console.error(err);
+            Swal.fire(processingExceptions(err));
 
         }).finally(() => {
             setIsLoading(false);

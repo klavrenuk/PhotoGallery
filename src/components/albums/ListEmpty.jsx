@@ -6,7 +6,7 @@ import './css/list-empty.min.css';
 
 export default function ListEmpty(props) {
 
-    const createItem = () => props.RefModalAlbum.current.open(null, true);
+    const createItem = () => props.RefModalAlbum.current.open(undefined, true);
 
     return (
         <div className={'list_empty'}>
