@@ -5,9 +5,12 @@
   &.root--h_fixed {
     height: 100vh;
     overflow: hidden;
+
+    & .header {
+      display: none;
+    }
   }
 }
-
 
 body {
   color: #333333;
@@ -18,7 +21,7 @@ body {
 }
 
 .main {
-  padding: 3rem 0;
+  padding: 100px 0 40px;
 }
 
 ::selection {
