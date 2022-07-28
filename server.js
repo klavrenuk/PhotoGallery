@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const mongoose = require('mongoose');
 const path = require('path');
 const app = express(),
     bodyParser = require('body-parser'),
@@ -23,6 +24,13 @@ process.on('unhandledrejection', (err) => {
 });
 
 
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+mongoose.connect('mongodb://localhost:27017/photoGallery',(err) => {
+    if(err) {
+        console.log('DataBase connection error');
+        return false;
+    }
+
+    app.listen(port, () => {
+        console.log(`Server running at http://localhost:${port}`);
+    })
 })
