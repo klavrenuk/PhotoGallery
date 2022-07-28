@@ -1,7 +1,6 @@
 const {BadRequestError, ServerError} = require('./../utils/error-utils');
-const {upload} = require('./../utils/util-multer');
+const {upload} = require('../middleware/multer');
 
-console.log('upload', upload);
 
 class Album {
     constructor() {};

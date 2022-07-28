@@ -7,6 +7,7 @@ import ModalEdit from "../modals/ModalEdit";
 import ModalConfirmDelete from "../modals/ModalConfirmDelete";
 
 import './css/albums.min.css';
+import axios from "axios";
 
 export default function Albums() {
     const [albums, setAlbums] = useState([]);
@@ -15,67 +16,28 @@ export default function Albums() {
     const RefModalConfirmDelete = useRef();
     const RefModalEdit = useRef();
 
-    useEffect(() => {
+    useEffect(async () => {
         if(isLoading) {
-            setAlbums([
-                {
-                    name: 'france',
-                    photos: [
-                        'images/france/image1.jpg',
-                        'images/france/image2.jpg',
-                        'images/france/image3.jpg'
-                    ]
-                },
-                {
-                    name: 'usa',
-                    photos: [
-                        'images/usa/img1.jpg',
-                        'images/usa/img2.jpg',
-                        'images/usa/img3.jpg'
-                    ]
-                },
-                {
-                    name: 'New Zealand',
-                    photos: [
-                        'images/france/image1.jpg'
-                    ]
-                },
-                {
-                    name: 'Canada',
-                    photos: [
-
-                    ]
-                },
-                {
-                    name: 'Germany',
-                    photos: [
-                        'images/france/image1.jpg',
-                        'images/france/image2.jpg',
-                        'images/france/image3.jpg'
-                    ]
-                },
-                {
-                    name: 'Belarus',
-                    photos: [
-                        'images/france/image1.jpg',
-                        'images/france/image2.jpg',
-                        'images/france/image3.jpg'
-                    ]
-                },
-                {
-                    name: 'Argentina',
-                    photos: [
-                        'images/france/image1.jpg',
-                        'images/france/image2.jpg',
-                        'images/france/image3.jpg'
-                    ]
-                }
-            ])
+            const arr = await getAlbums();
 
             setIsLoading(false);
         }
 
     }, [isLoading])
+
+    const getAlbums = () => {
+        return new Promise((resolve) => [
+            axios({
+                method: 'GET',
+                url: 'http://localhost:9000/api/albums'
+            }).then((response) => {
+                console.log(response);
+            }).catch((err) => {
+                console.error(err);
+                resolve([]);
+            })
+        ])
+    }
 
     return (
         <div className={'albums'}>
