@@ -3,6 +3,9 @@ import {useDispatch} from 'react-redux';
 import {Row, Col, Button} from "reactstrap";
 import {HiOutlinePencil} from "@react-icons/all-files/hi/HiOutlinePencil";
 import { BsTrash } from "react-icons/bs";
+import axios from "axios";
+import Swal from "sweetalert2";
+import {processingExceptions} from "../../middleware/processingExceptions";
 
 import Cover from "./Cover";
 import PhotoSmall from "./PhotoSmall";
@@ -40,6 +43,23 @@ export default function Album(props) {
         }
     }
 
+    const onRemovePhoto = (album, photo) => {
+        axios({
+            method: 'DELETE',
+            url: '/api/photo',
+            params: {
+                albumId: album._id,
+                photo: photo,
+                photos: album.photos
+            }
+        }).then(() => {
+            props.update();
+
+        }).catch((err) => {
+            Swal.fire(processingExceptions(err));
+        })
+    }
+
     return (
         <div className={'album'}>
             <Row>
@@ -72,6 +92,12 @@ export default function Album(props) {
                                             photo={photo}
                                             openPhoto={openPhoto}
                                         />
+                                        <Button color={'icon'}
+                                                className={'photo-remove'}
+                                                onClick={() => onRemovePhoto(album, photo)}
+                                        >
+                                            <BsTrash />
+                                        </Button>
                                     </div>
                                 )
                             })

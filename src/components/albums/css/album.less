@@ -1,3 +1,5 @@
+@import "../../../css/config";
+
 .album {
   padding: 2rem 0;
 
@@ -13,9 +15,38 @@
     justify-content: center;
 
     & .album-photos-photo {
+      position: relative;
       width: 399px;
       height: 265px;
       padding: 1rem;
+
+      &:hover,
+      &:active,
+      &:focus {
+        & .photo-remove {
+          display: flex;
+        }
+      }
+    }
+
+    & .photo-remove {
+      position: absolute;
+      top: 2rem;
+      right: 3rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 100px;
+      align-items: center;
+      justify-content: center;
+      display: none;
+      background: rgba(0,0,0,.4);
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: #fff !important;
+        background: @colorThird;
+      }
     }
   }
 

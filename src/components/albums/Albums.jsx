@@ -25,7 +25,7 @@ export default function Albums() {
             setIsLoading(false);
         }
 
-    }, [])
+    }, [isLoading])
 
     const getAlbums = () => {
         return new Promise((resolve) => [
@@ -58,7 +58,11 @@ export default function Albums() {
                                                 {
                                                     albums.map((album, key) => {
                                                         return (
-                                                            <Album data={album} isCover={true} key={key} />
+                                                            <Album data={album}
+                                                                   isCover={true}
+                                                                   key={key}
+                                                                   update={update}
+                                                            />
                                                         )
                                                     })
                                                 }
@@ -73,6 +77,7 @@ export default function Albums() {
                                                                    key={key}
                                                                    refEdit={RefModalAlbum}
                                                                    refConfirm={RefModalConfirmDelete}
+                                                                   update={update}
                                                             />
                                                         )
                                                     })
