@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(multer({dest:__dirname+'/uploads'}).any());
 
+require('./server/router')(app);
 
 process.on('uncaughtException', (err) => {
     console.error(err);
