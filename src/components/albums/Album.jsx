@@ -30,7 +30,7 @@ export default function Album(props) {
 
     const onEdit = () => {
         if(props.refEdit) {
-            props.refEdit.current.show();
+            props.refEdit.current.open(album);
         }
     }
 

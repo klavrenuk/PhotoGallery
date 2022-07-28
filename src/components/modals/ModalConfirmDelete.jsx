@@ -24,7 +24,7 @@ const ModalConfirmDelete = forwardRef((props, ref) => {
     }
 
     return (
-        <Modal className={'modal_event'}
+        <Modal className={'modal_confirm'}
                isOpen={isShow}
                toggle={toggle}
                size={'md'}
