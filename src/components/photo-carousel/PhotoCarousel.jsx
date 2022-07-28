@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-
 import {Button} from 'reactstrap';
+import FixedPage from "../../middleware/fixed-page";
 
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
@@ -27,13 +27,14 @@ export default function PhotoCarousel() {
             setIsShow(state.photoCarousel.isShow);
 
             if(state.photoCarousel.isShow) {
+                FixedPage.set(true);
+
                 activePhotoIndex.current = 0;
-                toggleRootClass(true);
                 photos.current = state.photoCarousel.photos;
                 setActivePhoto(photos.current[activePhotoIndex.current]);
 
-            } else {
-                toggleRootClass(false);
+            } else if(isShow) {
+                FixedPage.remove(false);
             }
         }
 
@@ -42,18 +43,6 @@ export default function PhotoCarousel() {
         }
 
     }, [state]);
-
-    const toggleRootClass = (isAdd) => {
-        const root = document.querySelector('#root');
-
-        if(root) {
-            if(isAdd) {
-                root.classList.add('root--h_fixed')
-            } else {
-                root.classList.remove('root--h_fixed')
-            }
-        }
-    }
 
     const handleKeyDown = (event) => {
         switch (event.keyCode) {
