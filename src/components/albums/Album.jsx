@@ -1,6 +1,5 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
-import { HiOutlinePencil, HiOutlineTrash } from "react-icons/hi";
 import {Row, Col, Button} from "reactstrap";
 
 import Cover from "./Cover";

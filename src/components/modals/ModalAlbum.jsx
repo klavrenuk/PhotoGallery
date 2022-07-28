@@ -6,17 +6,17 @@ import InputFiles from "./InputFIles";
 
 import './css/modal-edit.min.css';
 
-const ModalEdit = forwardRef((props, ref) => {
+const ModalAlbum = forwardRef((props, ref) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [album, setAlbum] = useState({});
     const [title, setTile] = useState(null);
 
     useImperativeHandle(ref, () => ({
-        open(album) {
+        open(album = {}) {
             setIsOpen(true);
             setAlbum(album);
-            setTile(album.name || '');
+            setTile(album.name || 'Create album');
         }
     }));
 
@@ -52,7 +52,7 @@ const ModalEdit = forwardRef((props, ref) => {
                 isLoading ? <Loader type={'modal'} /> : null
             }
 
-            <ModalHeader toggle={toggle}>Edit {title}</ModalHeader>
+            <ModalHeader toggle={toggle}>{title}</ModalHeader>
 
             <ModalBody>
                 <form className={'modal_edit-form'}>
@@ -81,4 +81,4 @@ const ModalEdit = forwardRef((props, ref) => {
     )
 });
 
-export default ModalEdit;
+export default ModalAlbum;
