@@ -7,11 +7,9 @@ import InputFiles from "./InputFIles";
 import './css/modal-edit.min.css';
 
 const ModalEdit = forwardRef((props, ref) => {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [album, setAlbum] = useState({
-        name: 'France'
-    });
+    const [album, setAlbum] = useState({});
     const [title, setTile] = useState(null);
 
     useImperativeHandle(ref, () => ({
