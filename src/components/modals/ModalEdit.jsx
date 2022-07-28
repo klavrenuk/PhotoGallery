@@ -1,5 +1,5 @@
-import React, {forwardRef, useImperativeHandle, useState, useRef} from 'react'
-import {Button, FormGroup, Modal, ModalBody, ModalFooter, ModalHeader, Label, Input, Form} from "reactstrap";
+import React, {forwardRef, useImperativeHandle, useState} from 'react'
+import {Button, FormGroup, Modal, ModalBody, ModalFooter, ModalHeader, Label, Input} from "reactstrap";
 
 import Loader from "../loader/Loader";
 import InputFiles from "./InputFIles";
@@ -13,7 +13,6 @@ const ModalEdit = forwardRef((props, ref) => {
         name: 'France'
     });
     const [title, setTile] = useState(null);
-    const [newPhotos, setNewPhotos] = useState([]);
 
     useImperativeHandle(ref, () => ({
         open(album) {
@@ -28,10 +27,14 @@ const ModalEdit = forwardRef((props, ref) => {
     const onSave = () => {
         setIsLoading(true);
         console.log('saving...', album);
+        setIsLoading(false);
     }
 
-    const onChangeFiles = (event) => {
-        newPhotos(newPhotos.concat(event.target.files));
+    const onChangePhotos = (photos) => {
+        setAlbum({
+            ...album,
+            photos: photos
+        })
     }
 
     const onChangeName = (event) => {
@@ -67,7 +70,7 @@ const ModalEdit = forwardRef((props, ref) => {
                     </FormGroup>
 
                     <FormGroup>
-                        <InputFiles />
+                        <InputFiles onChangePhotos={onChangePhotos} />
                     </FormGroup>
                 </form>
             </ModalBody>

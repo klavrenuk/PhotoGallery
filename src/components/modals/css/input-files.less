@@ -1,0 +1,48 @@
+.input_files {
+  & .input_files-add {
+    margin-bottom: 1rem;
+  }
+
+  & .modal_edit-input_photo {
+    display: none;
+  }
+
+  & .modal_edit-photo {
+    position: relative;
+    width: 185px;
+    height: 127px;
+    padding: 5px;
+    display: inline-block;
+
+    &:hover,
+    &:active,
+    &:focus {
+      & .modal_edit-photo-remove {
+        opacity: 1;
+      }
+    }
+
+    & img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    & .modal_edit-photo-remove {
+      position: absolute;
+      top: .5rem;
+      right: .5rem;
+      color: #fff !important;
+      background: rgba(0,0,0,.4);
+      opacity: 0;
+      transition: opacity 0.3s, visibility 0.3s;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: #fff !important;
+        background: rgba(0,0,0,.4);
+      }
+    }
+  }
+}
