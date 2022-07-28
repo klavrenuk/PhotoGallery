@@ -1,7 +1,8 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
 import {Row, Col, Button} from "reactstrap";
-import {HiOutlinePencil, HiOutlineTrash} from "@react-icons/all-files/hi/HiOutlinePencil";
+import {HiOutlinePencil} from "@react-icons/all-files/hi/HiOutlinePencil";
+import { BsTrash } from "react-icons/bs";
 
 import Cover from "./Cover";
 import PhotoSmall from "./PhotoSmall";
@@ -11,7 +12,6 @@ import './css/album.min.css';
 
 export default function Album(props) {
     const dispatch = useDispatch();
-
     const album = props.data;
 
     if (props.isCover) {
@@ -55,7 +55,7 @@ export default function Album(props) {
                     <Button color={'icon'}
                             onClick={() => onDelete()}
                     >
-                        <HiOutlineTrash />
+                        <BsTrash />
                     </Button>
                 </Col>
             </Row>

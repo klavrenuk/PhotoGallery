@@ -8,7 +8,7 @@ export default function PhotoSmall(props) {
     return (
         <a className={'photo_small'} onClick={() => props.openPhoto()}>
             {
-                props.photo ? <img src={props.photo} alt={'Img of cover'} /> :
+                props.photo ? <img src={'/uploads/' + props.photo} alt={'Img of cover'} /> :
                     <img src={NoPhoto} alt={'Img no photos'} />
             }
         </a>

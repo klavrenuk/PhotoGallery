@@ -106,7 +106,7 @@ export default function PhotoCarousel() {
                         <AiOutlineClose />
                     </Button>
 
-                    <img src={activePhoto} alt={'Photo'} />
+                    <img src={'/uploads/' + activePhoto} alt={'Photo'} />
 
                     {
                         photos.current.length > 1 ?

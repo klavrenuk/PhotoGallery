@@ -1,31 +1,23 @@
-const fs = require('fs');
-const path = require('path');
-
-const {BadRequestError, ServerError} = require('./../utils/error-utils');
+const SchemaAlbum = require('./../schemas/Album');
+const {ServerError} = require('./../utils/error-utils');
 
 class Albums {
     constructor() {};
 
     getList(response) {
-        const dir = path.join(process.cwd(), '/uploads');
-
-        try {
-            fs.readdir(dir, (err, albums) => {
-                if(err) {
-                    throw(err);
-                }
-
-                response.json({
-                    albums: albums
+        SchemaAlbum.find({}, (err, list) => {
+            if(err) {
+                console.error(err);
+                throw new ServerError({
+                    message: 'Server error',
+                    response: response
                 });
-            })
+            }
 
-        } catch (err) {
-            console.error(err);
-            response.json({
-                albums: []
-            });
-        }
+            response.status(200).json({
+                albums: list
+            })
+        })
     }
 }
 
