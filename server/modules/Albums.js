@@ -7,8 +7,6 @@ class Albums {
     constructor() {};
 
     getList(response) {
-        console.log('albumns');
-
         const dir = path.join(process.cwd(), '/uploads');
 
         try {

@@ -1,5 +1,8 @@
 import React, {forwardRef, useImperativeHandle, useState} from 'react'
 import {Button, FormGroup, Modal, ModalBody, ModalFooter, ModalHeader, Label, Input} from "reactstrap";
+import Swal from 'sweetalert2'
+import axios from "axios";
+
 
 import Loader from "../loader/Loader";
 import InputFiles from "./InputFIles";
@@ -11,12 +14,14 @@ const ModalAlbum = forwardRef((props, ref) => {
     const [isLoading, setIsLoading] = useState(false);
     const [album, setAlbum] = useState({});
     const [title, setTile] = useState(null);
+    const [isNew, setIsNew] = useState(true);
 
     useImperativeHandle(ref, () => ({
-        open(album = {}) {
+        open(album = {name: ''}, isNewAlbum = false) {
             setIsOpen(true);
             setAlbum(album);
             setTile(album.name || 'Create album');
+            setIsNew(isNewAlbum);
         }
     }));
 
@@ -25,7 +30,45 @@ const ModalAlbum = forwardRef((props, ref) => {
     const onSave = () => {
         setIsLoading(true);
         console.log('saving...', album);
-        setIsLoading(false);
+
+
+        if(album.name === '') {
+            Swal.fire('Please fill name');
+            return false;
+        }
+
+        let method = 'PUT';
+        if(isNew) {
+            method = 'POST';
+        }
+
+        let form = new FormData();
+        for(let photo of album.photos) {
+            form.append('photos', photo);
+        }
+
+
+        console.log('sended', form.get('photos'));
+
+        axios({
+            header: {
+                'content-type': 'multipart/form-data'
+            },
+            method: method,
+            url: '/api/album',
+            params: {
+                album: album.name
+            },
+            data: form
+        }).then((response) => {
+            console.log('response');
+
+        }).catch((err) => {
+            console.error(err);
+
+        }).finally(() => {
+            setIsLoading(false);
+        });
     }
 
     const onChangePhotos = (photos) => {
@@ -63,7 +106,7 @@ const ModalAlbum = forwardRef((props, ref) => {
                             type="text"
                             name="name"
                             value={album.name}
-                            onChange={() => onChangeName(event)}
+                            onChange={(event) => onChangeName(event)}
                         />
                     </FormGroup>
 

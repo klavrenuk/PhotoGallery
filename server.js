@@ -1,15 +1,16 @@
 const express = require('express');
 const cors = require('cors');
-const multer = require('multer');
+const path = require('path');
 const app = express(),
     bodyParser = require('body-parser'),
     port = 9000;
 
 app.use(cors());
 app.use(express.Router());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json({extended: true}));
 app.use(bodyParser.json());
-app.use(multer({dest:__dirname+'/uploads'}).any());
+app.use(express.urlencoded({ extended: true }));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 require('./server/router')(app);
 
@@ -22,6 +23,6 @@ process.on('unhandledrejection', (err) => {
 });
 
 
-app.listen(port, (x1, x2) => {
+app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 })

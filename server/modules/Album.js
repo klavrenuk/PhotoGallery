@@ -1,32 +1,19 @@
-const {BadRequestError, ServerError} = require('./../utils/error-utils');
-const {upload} = require('../middleware/multer');
-
+const {ServerError} = require('./../utils/error-utils');
 
 class Album {
     constructor() {};
 
     create(request, response) {
 
-        console.log('request file', request.file);
-        const file = request.file;
 
-        console.log('file', file);
-
-        if(!file) {
-            throw new BadRequestError({
-                message: 'Please, choose file',
+        if(request.file) {
+            response.status(200).send('ok');
+        } else {
+            throw new ServerError({
+                message: 'Saving image error. Please, try later',
                 response: response
             });
         }
-
-        upload((req, res, err) => {
-            console.log('upload req', req);
-            console.log('upload res', res);
-            console.log('upload err', err);
-
-
-            response.send('ok');
-        })
     }
 }
 

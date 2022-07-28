@@ -1,6 +1,7 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
 import {Row, Col, Button} from "reactstrap";
+import {HiOutlinePencil, HiOutlineTrash} from "@react-icons/all-files/hi/HiOutlinePencil";
 
 import Cover from "./Cover";
 import PhotoSmall from "./PhotoSmall";

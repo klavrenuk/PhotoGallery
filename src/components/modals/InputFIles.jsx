@@ -42,7 +42,7 @@ export default function InputFiles(props) {
                     onClick={() => toggleFileInput()}
             >AddPhoto</Button>
             <input type="file"
-                   className={'modal_edit-input_photo'}
+                   className={'input_files-input_photo'}
                    multiple="multiple"
                    accept={'image/*'}
                    ref={RefInputFile}
@@ -53,12 +53,12 @@ export default function InputFiles(props) {
                 {
                     photos.map((photo, index) => {
                         return (
-                            <div key={index} className={'modal_edit-photo'}>
+                            <div key={index} className={'input_files-photo'}>
                                 <img src={photo.src}
                                      alt={`Photo ${photo.name}`}
                                 />
                                 <Button color={'icon'}
-                                        className={'modal_edit-photo-remove'}
+                                        className={'input_files-remove'}
                                         onClick={() => removePhoto(index)}
                                 >
                                     <HiOutlineTrash/>
