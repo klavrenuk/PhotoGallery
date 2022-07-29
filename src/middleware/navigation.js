@@ -12,11 +12,6 @@ const pages = [
 
 const pagesForView = [
     {
-        title: 'About',
-        path: '/about',
-        component: About
-    },
-    {
         title: 'Home',
         path: '/',
         component: Dashboard
