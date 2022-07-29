@@ -71,7 +71,7 @@ export default function Albums() {
                         {
                             !albums[0] ? <ListEmpty RefModalAlbum={RefModalAlbum} />  :
                                 <div>
-                                    <Row>
+                                    <Row className={'albums-create'}>
                                         <Col sm={12}>
                                             <Button color={'primary'}
                                                     onClick={() => createAlbum()}

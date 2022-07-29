@@ -1,1 +1,1 @@
-.albums .covers{display:flex;flex-wrap:wrap;flex-direction:row;justify-content:center}.albums .photos{margin-top:2rem}
+.albums .albums-create{margin-bottom:20px}@media all and (max-width:720px){.albums .albums-create{text-align:center}}.albums .covers{display:flex;flex-wrap:wrap;flex-direction:row;justify-content:center}.albums .photos{margin-top:2rem}
