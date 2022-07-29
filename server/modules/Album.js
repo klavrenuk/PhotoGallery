@@ -55,16 +55,19 @@ class Album {
             return file.filename;
         })
 
+        let listPhotos = [];
+        if(request.query.photos) {
+            listPhotos = request.query.photos;
+        }
+
         SchemaAlbum.findOneAndUpdate(
             {_id: request.query.id},
             {
                 name: request.query.name,
-                photos: request.query.photos.concat(photos)
+                photos: listPhotos.concat(photos)
             },
             (err) => {
                 if(err) {
-                    console.error(err);
-
                     for(let photo of photos) {
                         removePhoto(photo);
                     }

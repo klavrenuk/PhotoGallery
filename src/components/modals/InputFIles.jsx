@@ -40,7 +40,7 @@ export default function InputFiles(props) {
             <Button color={'primary'}
                     className={'input_files-add'}
                     onClick={() => toggleFileInput()}
-            >AddPhoto</Button>
+            >add photo</Button>
             <input type="file"
                    className={'input_files-input_photo'}
                    multiple="multiple"

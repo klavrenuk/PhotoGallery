@@ -58,7 +58,7 @@ const ModalAlbum = forwardRef((props, ref) => {
             method = 'PUT';
             params = {
                 ...params,
-                photos: photosSaved,
+                photos: photosSaved || [],
                 id: item._id
             };
         }
@@ -78,11 +78,11 @@ const ModalAlbum = forwardRef((props, ref) => {
             data: form
 
         }).then(() => {
-            props.update();
             setIsLoading(false);
 
             setTimeout(() => {
                 setIsOpen(false);
+                props.update();
             }, 600);
 
         }).catch((err) => {
