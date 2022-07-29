@@ -16,6 +16,7 @@ const ModalAlbum = forwardRef((props, ref) => {
     const [album, setAlbum] = useState({name: ''});
     const [title, setTile] = useState(null);
     const [isNew, setIsNew] = useState(true);
+    const [photosSaved, setPhotosSaved] = useState([]);
 
     useImperativeHandle(ref, () => ({
         open(item = {name: ''}, isNewAlbum = false) {
@@ -23,6 +24,12 @@ const ModalAlbum = forwardRef((props, ref) => {
             setAlbum(item);
             setTile(item.name || 'Create album');
             setIsNew(isNewAlbum);
+
+            if(!isNewAlbum) {
+                setPhotosSaved(item.photos);
+            } else {
+                setPhotosSaved([]);
+            }
         }
     }));
 
@@ -42,9 +49,18 @@ const ModalAlbum = forwardRef((props, ref) => {
 
         setIsLoading(true);
 
-        let method = 'PUT';
-        if(isNew) {
-            method = 'POST';
+        let params = {
+            name: item.name
+        };
+
+        let method = 'POST';
+        if(!isNew) {
+            method = 'PUT';
+            params = {
+                ...params,
+                photos: photosSaved,
+                id: item._id
+            };
         }
 
         let form = new FormData();
@@ -58,10 +74,9 @@ const ModalAlbum = forwardRef((props, ref) => {
             },
             method: method,
             url: '/api/album',
-            params: {
-                name: item.name
-            },
+            params: params,
             data: form
+
         }).then(() => {
             props.update();
             setIsLoading(false);

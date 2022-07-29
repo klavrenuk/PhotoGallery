@@ -44,6 +44,23 @@ export default function Albums() {
 
     const update = () => setIsLoading(true);
 
+    const remove = (album) => {
+        return new Promise((resolve, reject) => {
+            axios({
+                method: 'DELETE',
+                url: '/api/album',
+                params: {
+                    id: album._id,
+                    photos: album.photos || []
+                }
+            }).then(() => {
+                resolve(true);
+            }).catch((err) => {
+                reject(err);
+            })
+        })
+    }
+
     return (
         <div className={'albums'}>
             {
@@ -91,7 +108,10 @@ export default function Albums() {
 
             }
 
-            <ModalConfirmDelete ref={RefModalConfirmDelete} update={update} />
+            <ModalConfirmDelete ref={RefModalConfirmDelete}
+                                update={update}
+                                remove={remove}
+            />
             <ModalAlbum ref={RefModalAlbum} update={update} />
         </div>
     )
