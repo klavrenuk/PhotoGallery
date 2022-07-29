@@ -91,24 +91,23 @@ class Album {
             photos: photos
         });
 
-        try {
-            album.save((err) => {
-                if(err) {
-                    throw(err);
+        album.save((err) => {
+            if(err) {
+                console.error(err);
+
+                for(let photo of photos) {
+                    removePhoto(photo);
                 }
 
+                throw new ServerError({
+                    message: 'Saving error. Please, try later',
+                    response: response
+                });
+
+            } else {
                 response.status(200).send('ok');
-            })
-
-        } catch(err) {
-            console.error(err);
-            // remove
-
-            throw new ServerError({
-                message: 'Saving image error. Please, try later',
-                response: response
-            });
-        }
+            }
+        })
     }
 }
 
