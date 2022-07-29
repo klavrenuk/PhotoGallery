@@ -5,9 +5,11 @@ const path = require('path');
 
 require('dotenv').config();
 
+console.log(process.env.serverPort);
+
 const app = express(),
     bodyParser = require('body-parser'),
-    port = process.env.PORT || 9000;
+    port = process.env.serverPort || 3000;
 
 app.use(cors());
 app.use(express.Router());
