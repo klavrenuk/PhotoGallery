@@ -46,7 +46,7 @@
   },
   "scripts": {
     "front": "react-scripts start",
-    "server": "node server/server",
+    "server": "node server",
     "start": "npm-run-all -p server front"
   },
   "proxy": "http://localhost:9000",
