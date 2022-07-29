@@ -24,7 +24,9 @@ process.on('unhandledrejection', (err) => {
 });
 
 
-mongoose.connect('mongodb://localhost:27017/photoGallery',(err) => {
+mongoose.connect('mongodb://localhost:27017/photoGallery',
+    {useFindAndModify: false},
+    (err) => {
     if(err) {
         console.log('DataBase connection error');
         return false;
