@@ -1,7 +1,5 @@
 import Dashboard from "../views/Dashboard";
 import Demo from "../components/demo/Demo";
-import About from "../views/About";
-
 
 const pages = [
     {

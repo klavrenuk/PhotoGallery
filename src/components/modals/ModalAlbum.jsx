@@ -4,11 +4,11 @@ import Swal from 'sweetalert2'
 import axios from "axios";
 import {processingExceptions} from "../../middleware/processingExceptions";
 
-
 import Loader from "../loader/Loader";
 import InputFiles from "./InputFIles";
 
 import './css/modal-edit.min.css';
+
 
 const ModalAlbum = forwardRef((props, ref) => {
     const [isOpen, setIsOpen] = useState(false);

@@ -34,7 +34,6 @@ export default function InputFiles(props) {
 
     const toggleFileInput = () => RefInputFile.current.click();
 
-
     return (
         <div className={'input_files'}>
             <Button color={'primary'}

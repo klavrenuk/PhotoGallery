@@ -5,7 +5,7 @@ const sendResponse = (response, status, message) => {
 
     response.status(status).json({
         message: message
-    })
+    });
 }
 
 class BaseError extends Error {

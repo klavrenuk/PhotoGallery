@@ -5,7 +5,6 @@ const initState = {
     }
 };
 
-
 const reducers = (state = initState, action) => {
     switch(action.type) {
         case 'photoCarousel':

@@ -1,7 +1,6 @@
 import React, {forwardRef, useImperativeHandle, useState} from 'react'
 import {Button, Modal, ModalBody, ModalFooter, ModalHeader, Alert} from "reactstrap";
 import {processingExceptions} from "../../middleware/processingExceptions";
-import Swal from "sweetalert2";
 
 import Loader from "../loader/Loader";
 
@@ -56,7 +55,6 @@ const ModalConfirmDelete = forwardRef((props, ref) => {
             <ModalHeader toggle={toggle}>Confirm</ModalHeader>
 
             <ModalBody>
-
                 <div className={'text-center'}>
                     {
                         !isSaved ?
@@ -67,7 +65,6 @@ const ModalConfirmDelete = forwardRef((props, ref) => {
                             </Alert>
                     }
                 </div>
-
             </ModalBody>
 
             <ModalFooter>
