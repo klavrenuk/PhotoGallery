@@ -21,12 +21,13 @@ export default function Album(props) {
         return <Cover data={album}/>
     }
 
-    const openPhoto = () => {
+    const openPhoto = (index) => {
         dispatch({
             type: 'photoCarousel',
             value: {
                 isShow: true,
-                photos: album.photos
+                photos: album.photos,
+                index: index
             }
         })
     }
@@ -91,6 +92,7 @@ export default function Album(props) {
                                         <PhotoSmall
                                             photo={photo}
                                             openPhoto={openPhoto}
+                                            indexPhoto={index}
                                         />
                                         <Button color={'icon'}
                                                 className={'photo-remove'}

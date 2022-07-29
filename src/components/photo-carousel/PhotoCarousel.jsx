@@ -29,7 +29,7 @@ export default function PhotoCarousel() {
             if(state.photoCarousel.isShow) {
                 FixedPage.set(true);
 
-                activePhotoIndex.current = 0;
+                activePhotoIndex.current = state.photoCarousel.index || 0;
                 photos.current = state.photoCarousel.photos;
                 setActivePhoto(photos.current[activePhotoIndex.current]);
 
