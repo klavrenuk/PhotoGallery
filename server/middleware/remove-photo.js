@@ -7,7 +7,13 @@ const removePhoto = (imgPath) => {
     return new Promise((resolve, reject) => {
         fs.unlink(dir + '/' + imgPath, (err) => {
             if(err) {
-                reject(err);
+                if(err.code === 'ENOENT') {
+                    console.error(err);
+                    resolve(true);
+                } else {
+                    reject(err);
+                }
+
             } else {
                 resolve(true);
             }
