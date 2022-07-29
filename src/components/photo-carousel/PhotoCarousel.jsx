@@ -2,6 +2,7 @@ import React, {useEffect, useState, useRef} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {Button} from 'reactstrap';
 import FixedPage from "../../middleware/fixed-page";
+import {onErrorLoading} from "../../middleware/photo";
 
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
@@ -106,7 +107,10 @@ export default function PhotoCarousel() {
                         <AiOutlineClose />
                     </Button>
 
-                    <img src={'/uploads/' + activePhoto} alt={'Photo'} />
+                    <img src={'/uploads/' + activePhoto}
+                         alt={'Photo'}
+                         onError={(event) => onErrorLoading(event)}
+                    />
 
                     {
                         photos.current.length > 1 ?
