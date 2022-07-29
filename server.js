@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require("dotenv");
+const {createFolder} = require('./server/middleware/create-folder');
 
 dotenv.config({
     path: './.env'
@@ -39,5 +40,6 @@ mongoose.connect(process.env.database,
 
     app.listen(port, () => {
         console.log(`Server running at http://localhost:${port}`);
+        createFolder('uploads');
     })
 })

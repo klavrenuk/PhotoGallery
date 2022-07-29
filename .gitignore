@@ -107,4 +107,5 @@ dist
 
 /public/images/*
 
+/upload
 /uploads/*
