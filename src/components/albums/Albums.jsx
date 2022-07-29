@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useRef} from 'react';
-import {Row, Col} from "reactstrap";
+import {Row, Col, Button} from "reactstrap";
 import axios from "axios";
 
 import Loader from "../loader/Loader";
@@ -61,6 +61,8 @@ export default function Albums() {
         })
     }
 
+    const createAlbum = () => RefModalAlbum.current.open(undefined, true);
+
     return (
         <div className={'albums'}>
             {
@@ -69,6 +71,14 @@ export default function Albums() {
                         {
                             !albums[0] ? <ListEmpty RefModalAlbum={RefModalAlbum} />  :
                                 <div>
+                                    <Row>
+                                        <Col sm={12}>
+                                            <Button color={'primary'}
+                                                    onClick={() => createAlbum()}
+                                            >create album</Button>
+                                        </Col>
+                                    </Row>
+
                                     <Row>
                                         <Col sm={12}>
                                             <div className={'covers'}>
