@@ -106,6 +106,8 @@ const ModalAlbum = forwardRef((props, ref) => {
         });
     }
 
+    const onSubmit = (event) => event.preventDefault();
+
     return (
         <Modal className={'modal_edit'}
                isOpen={isOpen}
@@ -119,7 +121,7 @@ const ModalAlbum = forwardRef((props, ref) => {
             <ModalHeader toggle={toggle}>{title}</ModalHeader>
 
             <ModalBody>
-                <form className={'modal_edit-form'}>
+                <form className={'modal_edit-form'} onSubmit={(event) => onSubmit(event)}>
                     <FormGroup>
                         <Label for={'AlbumName'}>Album name</Label>
                         <Input
